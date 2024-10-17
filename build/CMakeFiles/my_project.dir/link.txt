@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/my_project.dir/main.cpp.o CMakeFiles/my_project.dir/LogicSystem.cpp.o CMakeFiles/my_project.dir/cserver.cpp.o CMakeFiles/my_project.dir/httpconnection.cpp.o -o my_project  -Wl,-rpath,/usr/local/lib /usr/local/lib/libboost_system.so.1.78.0 /usr/local/lib/libboost_thread.so.1.78.0 

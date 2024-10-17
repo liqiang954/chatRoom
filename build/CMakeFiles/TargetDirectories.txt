@@ -1,0 +1,3 @@
+/home/yan/code/GateServer/build/CMakeFiles/my_project.dir
+/home/yan/code/GateServer/build/CMakeFiles/edit_cache.dir
+/home/yan/code/GateServer/build/CMakeFiles/rebuild_cache.dir

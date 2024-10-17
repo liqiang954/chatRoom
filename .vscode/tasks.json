@@ -1,0 +1,79 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cmake configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B",
+                "${workspaceFolder}/build", // 指定构建目录
+                "-S",
+                "${workspaceFolder}", // 指定源代码目录
+                "-DCMAKE_BUILD_TYPE=Debug" ,// 构建类型，这里设置为 Debug                
+            ],
+            "dependsOn": ["create build directory"],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Configure the project with CMake"
+        },
+        {
+            "label": "cmake build",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build", // 指定构建目录
+                "--config",
+                "Debug", // 构建类型，这里设置为 Debug
+                "--target",
+                "my_project", // 目标名称，与 CMakeLists.txt 中 add_executable 定义的一致
+                "--",
+                "-j4" // 使用 4 个并行任务进行构建
+            ],
+            "dependsOn": ["cmake configure"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Build the project with CMake"
+
+        },
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "make",
+            "args": ["-j4"],
+            "options": {
+                "cwd": "${workspaceFolder}/build" // 指定工作目录
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "make clean",
+            "type": "shell",
+            "command": "make clean",
+            "options": {
+                "cwd": "${workspaceFolder}/build" // 指定工作目录
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        
+        
+
+    ]
+}
